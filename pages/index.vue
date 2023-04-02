@@ -1,4 +1,4 @@
-<template>
+<template>   
   <div>
     <h1>LOAD MARVEL CHARACTERS</h1>
     <v-btn @click="loadAccounts" :disabled="loading">LOAD CHARACTERS</v-btn>

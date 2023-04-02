@@ -1,4 +1,4 @@
-<template>
+<template>   
   <v-app dark>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -6,7 +6,7 @@
       <v-menu offset-y>
         <v-list>
           <v-list-item to="/profile">
-            <v-list-item-title>Mi perfil</v-list-item-title>
+            <v-list-item-title></v-list-item-title>
           </v-list-item>
           <v-list-item @click="closeSesion">
             <v-list-item-title>Salir</v-list-item-title>
@@ -26,20 +26,24 @@
 </template>
 
 <script>
-export default {
+export default { 
   name: 'DefaultLayout',
   beforeMount() {
     this.loadAccount()
   },
   data() {
-    return {
+    return { 
+      message: 'Marvel-api',
       fullname: "",
       clipped: true,
       fixed: false,
       miniVariant: false,
       title: 'MARVEL CHARACTERS',
     }
-  },
+  }, 
+  mounted(){
+    window.document.title = this.message; 
+  }, 
   methods: {
     closeSesion() {
       this.$router.push("/")
