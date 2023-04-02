@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>LOAD MARVEL CHARACTERS</h1>
-    <v-btn @click="loadAccounts" :disabled="loading">Cargar cuentas</v-btn>
+    <v-btn @click="loadAccounts" :disabled="loading">LOAD CHARACTERS</v-btn>
     <br />
     <span v-if="loading">Cargando...</span>
     <v-progress-linear
@@ -27,7 +27,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn @click="show = !show">Learn more</v-btn>
+              <v-btn @click="show = !show" id="account.id">Learn more</v-btn>
             </v-card-actions>
 
             <v-expand-transition>
@@ -35,13 +35,13 @@
                 <v-divider></v-divider>
 
                 <v-card-text>
-                  Cantidad de comics: {{ account.comics.available }}
+                  Comics: {{ account.comics.available }}
                   <br />
-                  Cantidad de series: {{ account.series.available }}
+                  Series: {{ account.series.available }}
                   <br />
-                  Cantidad de stories: {{ account.stories.available }}
+                  Stories: {{ account.stories.available }}
                   <br />
-                  Cantidad de eventos: {{ account.events.available }}
+                  Events: {{ account.events.available }}
                   <br />
                   <ul>
                     <li
