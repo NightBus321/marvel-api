@@ -1,42 +1,64 @@
 <template>
   <div>
     <h1>LOAD MARVEL CHARACTERS</h1>
-    <v-card class="mx-auto" max-width="344">
-      <v-img
-        src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-        height="200px"
-        cover
-      ></v-img>
+    <v-btn @click="loadAccounts" :disabled="loading">Cargar cuentas</v-btn>
+    <br />
+    <span v-if="loading">Cargando...</span>
+    <v-progress-linear
+      v-if="loading"
+      indeterminate
+      color="cyan"
+    ></v-progress-linear>
+    <br />
+    <div>
+      <ul style="list-style: none; display: flex; flex-wrap: wrap; margin: 0; padding: 0;">
+        <li v-for="account in accounts" :key="account.id" style="width: 32%; box-sizing: border-box; text-align: center; margin: 5px;">
+          <v-card class="mx-auto" max-width="344">
+            <v-img
+              :src="account.thumbnail.path + '.' + account.thumbnail.extension"
+              height="200px"
+              cover
+            ></v-img>
 
-      <v-card-title> Top western road trips </v-card-title>
+            <v-card-title> {{ account.name }}</v-card-title>
 
-      <v-card-subtitle> 1,000 miles of wonder </v-card-subtitle>
+            <v-card-subtitle>{{ account.description }}</v-card-subtitle>
 
-      <v-card-actions>
-        <v-btn color="orange-lighten-2" variant="text"> Explore </v-btn>
+            <v-card-actions>
+              <v-spacer></v-spacer>
 
-        <v-spacer></v-spacer>
+              <v-btn @click="show = !show">Learn more</v-btn>
+            </v-card-actions>
 
-        <v-btn
-          :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-          @click="show = !show"
-        ></v-btn>
-      </v-card-actions>
+            <v-expand-transition>
+              <div v-show="show">
+                <v-divider></v-divider>
 
-      <v-expand-transition>
-        <div v-show="show">
-          <v-divider></v-divider>
-
-          <v-card-text>
-            I'm a thing. But, like most politicians, he promised more than he
-            could deliver. You won't have time for sleeping, soldier, not with
-            all the bed making you'll be doing. Then we'll go with that data
-            file! Hey, you add a one and two zeros to that or we walk! You're
-            going to do his laundry? I've got to find a way to escape.
-          </v-card-text>
-        </div>
-      </v-expand-transition>
-    </v-card>
+                <v-card-text>
+                  Cantidad de comics: {{ account.comics.available }}
+                  <br />
+                  Cantidad de series: {{ account.series.available }}
+                  <br />
+                  Cantidad de stories: {{ account.stories.available }}
+                  <br />
+                  Cantidad de eventos: {{ account.events.available }}
+                  <br />
+                  <ul>
+                    <li
+                      v-for="serie in account.series.items.slice(0, 3)"
+                      :key="serie.name"
+                    >
+                      {{ serie.name }}
+                    </li> 
+                  </ul> 
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+          </v-card> 
+          <br>
+        </li> 
+      </ul> 
+    </div>
   </div>
 </template>
 
