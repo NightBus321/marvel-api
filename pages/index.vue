@@ -22,12 +22,12 @@
 
             <v-card-title> {{ account.name }}</v-card-title>
 
-            <v-card-subtitle>{{ account.description }}</v-card-subtitle>
+            <v-card-subtitle>{{ account.description ? account.description: "The information about this character is not found" }}</v-card-subtitle>
 
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn @click="show = !show" id="account.id">Learn more</v-btn>
+              <v-btn @click="show = !show">Learn more</v-btn>
             </v-card-actions>
 
             <v-expand-transition>
