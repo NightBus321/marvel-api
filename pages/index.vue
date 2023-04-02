@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     loadAccounts() {
-      console.log('Cargar cuentas')
+      console.log('Load characters')
       const url =
         'https://gateway.marvel.com:443/v1/public/characters?ts=10&apikey=af468b3503603801817dfff31982be6b&hash=70f8e7fd7ba77a7d1ad086d52bc20bc6'
       this.loading = true
